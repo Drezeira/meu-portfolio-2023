@@ -1,0 +1,784 @@
+/* ESTILO GERAL DO PORTFOLIO */
+:root {
+  /* === Cores Tema Escuro (Padrão) === */
+  --cor-primaria-dark: #00abf0; /* Azul vibrante */
+  --cor-secundaria-dark: #ededed; /* Branco/Cinza muito claro para textos */
+  --cor-fundo-dark: #0b132b; /* Azul bem escuro, quase preto */
+  --cor-fundo-secundaria-dark: #1c2541; /* Azul escuro para cards/seções */
+  --cor-destaque-dark: #3a506b; /* Azul acinzentado para detalhes/bordas */
+  --cor-sombra-dark: rgba(
+    0,
+    171,
+    240,
+    0.15
+  ); /* Sombra sutil baseada na cor primária */
+  --cor-texto-dark: var(--cor-secundaria-dark);
+  --cor-texto-fraco-dark: rgba(237, 237, 237, 0.7);
+  --cor-botao-texto-dark: var(--cor-fundo-dark);
+  --cor-botao-borda-dark: var(--cor-primaria-dark);
+  --cor-botao-hover-texto-dark: var(--cor-primaria-dark);
+  --cor-botao-hover-fundo-dark: transparent;
+
+  /* === Cores Tema Claro === */
+  --cor-primaria-light: #007bff; /* Azul padrão mais claro */
+  --cor-secundaria-light: #343a40; /* Cinza escuro para textos */
+  --cor-fundo-light: #f8f9fa; /* Fundo quase branco */
+  --cor-fundo-secundaria-light: #ffffff; /* Branco para cards/seções */
+  --cor-destaque-light: #dee2e6; /* Cinza claro para detalhes/bordas */
+  --cor-sombra-light: rgba(
+    0,
+    123,
+    255,
+    0.15
+  ); /* Sombra sutil baseada na cor primária light */
+  --cor-texto-light: var(--cor-secundaria-light);
+  --cor-texto-fraco-light: rgba(52, 58, 64, 0.75);
+  --cor-botao-texto-light: #ffffff;
+  --cor-botao-borda-light: var(--cor-primaria-light);
+  --cor-botao-hover-texto-light: var(--cor-primaria-light);
+  --cor-botao-hover-fundo-light: transparent;
+
+  /* === Variáveis Atuais (serão definidas pelo tema) === */
+  --cor-primaria: var(--cor-primaria-dark);
+  --cor-secundaria: var(--cor-secundaria-dark);
+  --cor-fundo: var(--cor-fundo-dark);
+  --cor-fundo-secundaria: var(--cor-fundo-secundaria-dark);
+  --cor-destaque: var(--cor-destaque-dark);
+  --sombra: var(--cor-sombra-dark);
+  --cor-texto: var(--cor-texto-dark);
+  --cor-texto-fraco: var(--cor-texto-fraco-dark);
+  --cor-botao-texto: var(--cor-botao-texto-dark);
+  --cor-botao-borda: var(--cor-botao-borda-dark);
+  --cor-botao-hover-texto: var(--cor-botao-hover-texto-dark);
+  --cor-botao-hover-fundo: var(--cor-botao-hover-fundo-dark);
+
+  /* === Outras Variáveis === */
+  --fonte-principal: "Rubik", sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* === Aplica Cores do Tema Claro === */
+body.light-mode {
+  --cor-primaria: var(--cor-primaria-light);
+  --cor-secundaria: var(--cor-secundaria-light);
+  --cor-fundo: var(--cor-fundo-light);
+  --cor-fundo-secundaria: var(--cor-fundo-secundaria-light);
+  --cor-destaque: var(--cor-destaque-light);
+  --sombra: var(--cor-sombra-light);
+  --cor-texto: var(--cor-texto-light);
+  --cor-texto-fraco: var(--cor-texto-fraco-light);
+  --cor-botao-texto: var(--cor-botao-texto-light);
+  --cor-botao-borda: var(--cor-botao-borda-light);
+  --cor-botao-hover-texto: var(--cor-botao-hover-texto-light);
+  --cor-botao-hover-fundo: var(--cor-botao-hover-fundo-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte-principal);
+  scroll-behavior: smooth; /* Rolagem suave */
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease; /* Transição suave de cores */
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  height: 100%;
+  line-height: 1.6;
+}
+
+/* CLASSE DE MARGEM-PADRÂO PARA TODO O SITE */
+.interface {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.flex {
+  display: flex;
+  gap: 40px;
+}
+
+/* UTILITÁRIOS */
+.titulo {
+  color: var(--cor-texto);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.titulo span {
+  color: var(--cor-primaria);
+}
+
+/* BOTÕES */
+button,
+input[type="submit"] {
+  padding: 12px 35px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--cor-botao-borda);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--cor-primaria);
+  color: var(--cor-botao-texto);
+}
+
+button:hover:not(.theme-switcher button):not(.menu-mobile-icon button):not(
+    #close-menu
+  ),
+input[type="submit"]:hover {
+  background-color: var(--cor-botao-hover-fundo);
+  color: var(--cor-botao-hover-texto);
+  box-shadow: 0 0 15px var(--sombra);
+  transform: translateY(-3px);
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: var(--cor-botao-texto);
+  border-color: var(--cor-botao-borda);
+}
+.btn-primario:hover {
+  background-color: var(--cor-botao-hover-fundo);
+  color: var(--cor-botao-hover-texto);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--cor-primaria);
+  border: 2px solid var(--cor-botao-borda);
+}
+.btn-secundario:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-botao-texto);
+}
+
+.btn-social button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  /* Cor específica para botão social, menos dependente do tema? */
+  background-color: #3a506b; /* Mantendo o azul acinzentado do tema escuro original */
+  color: #ededed;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+}
+body.light-mode .btn-social button {
+  background-color: #6c757d; /* Um cinza médio para o tema claro */
+  color: #f8f9fa;
+}
+
+.btn-social button:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-botao-texto); /* Usar a cor do texto do botão primário */
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ESTILO DO CABEÇALHO */
+header {
+  padding: 25px 0;
+  background-color: var(--cor-fundo);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra mais genérica */
+  transition: background-color var(--transition-speed) ease;
+}
+body.light-mode header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+header > .interface {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo a.logo-link {
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  transition: color var(--transition-speed) ease;
+}
+.logo a.logo-link span {
+  color: var(--cor-primaria);
+}
+.logo a.logo-link:hover {
+  color: var(--cor-primaria);
+}
+
+/* --- Menu Desktop --- */
+header nav.menu-desktop ul {
+  list-style-type: none;
+}
+
+header nav.menu-desktop ul li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+header nav.menu-desktop a {
+  color: var(--cor-texto);
+  text-decoration: none;
+  display: inline-block;
+  transition: color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+header nav.menu-desktop a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: var(--cor-primaria);
+  transition: width var(--transition-speed) ease;
+}
+
+header nav.menu-desktop a:hover::after {
+  width: 100%;
+  left: 0;
+  background: var(--cor-primaria);
+}
+
+header nav.menu-desktop a:hover {
+  color: var(--cor-primaria);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* --- Seletor de Tema --- */
+.theme-switcher button {
+  background: none;
+  border: none;
+  color: var(--cor-texto);
+  font-size: 1.5rem; /* Tamanho do ícone */
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+.theme-switcher button:hover {
+  opacity: 1;
+  color: var(--cor-primaria);
+  background: none; /* Reset hover do botão padrão */
+  transform: none; /* Reset hover do botão padrão */
+  box-shadow: none; /* Reset hover do botão padrão */
+}
+
+/* --- Ícone do Menu Mobile (Hamburguer) --- */
+.menu-mobile-icon {
+  display: none; /* Escondido por padrão */
+  z-index: 1002; /* Acima do overlay */
+}
+.menu-mobile-icon button {
+  background: none;
+  border: none;
+  color: var(--cor-texto);
+  font-size: 2rem; /* Tamanho do ícone hamburguer */
+  cursor: pointer;
+  padding: 5px;
+}
+.menu-mobile-icon button:hover {
+  color: var(--cor-primaria);
+  background: none; /* Reset hover do botão padrão */
+  transform: none; /* Reset hover do botão padrão */
+  box-shadow: none; /* Reset hover do botão padrão */
+}
+
+/* --- Menu Mobile (Painel Lateral) --- */
+nav.menu-mobile {
+  background-color: var(--cor-fundo); /* Usa cor de fundo do tema */
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%; /* Largura do menu */
+  max-width: 300px; /* Largura máxima */
+  height: 100vh; /* Altura total */
+  z-index: 1001; /* Acima do conteúdo, abaixo do header sticky? Ajustar se necessário */
+  padding: 80px 30px 30px 30px; /* Espaçamento interno (topo maior para botão fechar) */
+  transform: translateX(100%); /* Começa fora da tela */
+  transition: transform 0.4s ease-in-out;
+  border-left: 1px solid var(--cor-destaque);
+}
+
+nav.menu-mobile.aberto {
+  transform: translateX(0); /* Entra na tela */
+}
+
+nav.menu-mobile ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+nav.menu-mobile ul li {
+  margin-bottom: 20px;
+}
+
+nav.menu-mobile ul li a {
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: block; /* Ocupa toda a largura */
+  padding: 10px 0;
+  transition: color var(--transition-speed) ease;
+}
+
+nav.menu-mobile ul li a:hover {
+  color: var(--cor-primaria);
+}
+
+/* Botão Fechar Menu Mobile */
+#close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--cor-texto);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+#close-menu:hover {
+  color: var(--cor-primaria);
+  background: none; /* Reset hover do botão padrão */
+  transform: none; /* Reset hover do botão padrão */
+  box-shadow: none; /* Reset hover do botão padrão */
+}
+
+/* TOPO DO SITE */
+section.topo-do-site {
+  padding: 120px 4% 80px 4%;
+}
+
+section.topo-do-site .flex {
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.topo-do-site .txt-topo-site h1 {
+  color: var(--cor-texto);
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.topo-do-site .txt-topo-site h1 span {
+  color: var(--cor-primaria);
+}
+
+.topo-do-site .txt-topo-site h2 {
+  color: var(--cor-primaria);
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.topo-do-site .txt-topo-site h2 span {
+  color: var(--cor-texto);
+}
+
+.topo-do-site .txt-topo-site p {
+  color: var(--cor-texto);
+  opacity: 0.9;
+  margin: 30px 0;
+  font-size: 1.1rem;
+}
+
+.topo-do-site .img-topo-site img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px var(--sombra); /* Usar sombra do tema */
+  position: relative;
+  animation: flutuarSuave 3s ease-in-out infinite alternate;
+}
+
+.btn-group-topo {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ESTILO EXPERIENCIAS & HABILIDADES */
+section.experiencias,
+section.habilidades {
+  padding: 100px 4%;
+  background-color: var(--cor-fundo-secundaria);
+  transition: background-color var(--transition-speed) ease;
+}
+
+section.experiencias .flex,
+section.habilidades .flex {
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.experiencias-box,
+.habilidade-box {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  padding: 40px 30px;
+  border-radius: 15px;
+  margin-top: 0;
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
+  width: calc(33.33% - 40px);
+  min-width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra genérica */
+  border: 1px solid var(--cor-destaque); /* Borda sutil */
+}
+body.light-mode .experiencias-box,
+body.light-mode .habilidade-box {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.experiencias-box:hover,
+.habilidade-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px var(--sombra);
+}
+
+.experiencias-box i,
+.habilidade-box i {
+  font-size: 3.5rem;
+  color: var(--cor-primaria);
+  margin-bottom: 20px;
+  display: block;
+  transition: color var(--transition-speed) ease;
+}
+
+.experiencias-box h3,
+.habilidade-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--cor-texto); /* Usar cor de texto principal */
+}
+
+.experiencias-box p,
+.habilidade-box p {
+  font-size: 0.95rem;
+  color: var(--cor-texto-fraco); /* Usar cor de texto fraco */
+}
+
+/* ESTILO DA SESSÃO SOBRE */
+section.sobre {
+  padding: 100px 4%;
+}
+
+section.sobre .flex {
+  align-items: center;
+  gap: 60px;
+}
+
+.sobre .txt-sobre {
+  color: var(--cor-texto);
+}
+
+.sobre .txt-sobre h2 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.sobre .txt-sobre h2 span {
+  color: var(--cor-primaria);
+  display: block;
+}
+
+.sobre .txt-sobre p {
+  margin: 20px 0;
+  text-align: justify;
+  color: var(--cor-texto-fraco); /* Usar cor de texto fraco */
+}
+
+.sobre .img-sobre img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--sombra); /* Usar sombra do tema */
+}
+
+/* SESSAO FORMULARIO DE CONTATO */
+section.formulario {
+  padding: 100px 4%;
+  background-color: var(--cor-fundo-secundaria);
+  transition: background-color var(--transition-speed) ease;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  background-color: var(--cor-fundo); /* Fundo baseado no tema */
+  border: 1px solid var(--cor-destaque); /* Borda sutil baseada no tema */
+  outline: none;
+  padding: 18px 20px;
+  border-radius: 10px;
+  color: var(--cor-texto); /* Cor do texto digitado */
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--cor-texto-fraco); /* Placeholder com cor fraca */
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-fundo); /* Mantém o fundo ao focar */
+  box-shadow: 0 0 5px var(--sombra); /* Adiciona um brilho suave */
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+form .btn-enviar {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilo específico para botão submit já coberto pelo estilo geral de 'button, input[type="submit"]' */
+
+/* ANIMAÇÃO DA IMAGEM */
+@keyframes flutuarSuave {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+/* RODAPÉ */
+footer {
+  padding: 50px 4% 30px 4%;
+  background-color: var(--cor-fundo);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra genérica */
+  transition: background-color var(--transition-speed) ease;
+}
+body.light-mode footer {
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+footer .flex {
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer .line-footer {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.logo-footer a.logo-link {
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.logo-footer a.logo-link span {
+  color: var(--cor-primaria);
+}
+
+footer .line-footer.borda {
+  border-top: 1px solid var(--cor-destaque);
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+footer .line-footer p {
+  color: var(--cor-texto-fraco);
+  font-size: 0.9rem;
+}
+
+footer .line-footer p i {
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+footer .line-footer p a {
+  color: var(--cor-texto-fraco);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+footer .line-footer p a:hover {
+  color: var(--cor-primaria);
+}
+
+footer .copyright {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* =============================================== */
+/* =========== MEDIA QUERIES ===================== */
+/* =============================================== */
+@media screen and (max-width: 1024px) {
+  /* Tablets e menores */
+  .interface {
+    padding: 0 5%;
+  }
+
+  .flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  /* --- Esconde Menu Desktop e mostra Ícone Mobile --- */
+  .menu-desktop,
+  .btn-contato-header {
+    display: none;
+  }
+  .menu-mobile-icon {
+    display: block; /* Mostra o ícone hamburguer */
+  }
+  /* --- Fim Esconde/Mostra Menu --- */
+
+  section.topo-do-site .flex {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .topo-do-site .txt-topo-site h1 {
+    font-size: 2.5rem;
+  }
+  .topo-do-site .txt-topo-site h2 {
+    font-size: 1.3rem;
+  }
+  .btn-group-topo {
+    justify-content: center;
+  }
+
+  section.experiencias .flex,
+  section.habilidades .flex {
+    gap: 30px;
+  }
+  .experiencias-box,
+  .habilidade-box {
+    width: calc(50% - 20px);
+    min-width: 250px;
+  }
+
+  section.sobre .flex {
+    text-align: center;
+  }
+  .sobre .txt-sobre h2 {
+    font-size: 2.2rem;
+  }
+  .sobre .img-sobre img {
+    margin-bottom: 30px;
+  }
+  .btn-social {
+    margin-top: 20px;
+  }
+
+  footer .flex {
+    gap: 30px;
+  }
+  .logo-footer,
+  footer .btn-social {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Celulares */
+
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .experiencias-box,
+  .habilidade-box {
+    width: calc(100% - 20px);
+    max-width: 350px;
+  }
+
+  .topo-do-site .txt-topo-site h1 {
+    font-size: 2.2rem;
+  }
+  .topo-do-site .txt-topo-site h2 {
+    font-size: 1.2rem;
+  }
+
+  .sobre .txt-sobre h2 {
+    font-size: 2rem;
+  }
+
+  form {
+    max-width: 100%;
+  }
+  form input,
+  form textarea {
+    padding: 15px;
+  }
+  form .btn-enviar input[type="submit"] {
+    padding: 12px 40px;
+    font-size: 1rem;
+  }
+
+  header .interface {
+    padding: 0 5%;
+  }
+  header {
+    padding: 15px 0; /* Diminui padding do header em telas pequenas */
+  }
+
+  /* Ajuste no logo para caber com os ícones */
+  .logo a.logo-link {
+    font-size: 1.5rem;
+  }
+}
